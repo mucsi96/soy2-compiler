@@ -1,0 +1,18 @@
+{namespace examples.simpleNamespace}
+{alias hello.belLo}
+{alias meg.egy.AliAs}
+
+/**
+ * Says hello to the world.
+ */
+{template .helloWorld}
+
+    Hello World!
+
+    Ya
+
+    {call belLo.eloBelo /}
+
+    {call AliAs.run /}
+
+{/template}
