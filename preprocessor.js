@@ -1,6 +1,7 @@
 var fs = require('fs'),
     lowercaser = require('./lowercaser'),
-    dealiaser = require('./dealiaser');
+    dealiaser = require('./dealiaser'),
+    commenter = require('./commenter');
 
 function changeExtension(file, newExtension) {
     var regex = /\.[a-z0-9]+$/i;
@@ -11,7 +12,10 @@ function preprocess (file, done) {
     var newFileName = changeExtension(file, '.soy');
 
     if (file === newFileName) {
-        done ();
+        console.log('*.soy file specified. Exiting...');
+        if(done) {
+            done ();
+        }
         return;
     }
 
@@ -26,6 +30,7 @@ function preprocess (file, done) {
             return console.log(err);
         }
 
+        data = commenter.transform(data);
         data = lowercaser.transform(data);
         data = dealiaser.transform(data);
 

@@ -22,7 +22,7 @@ function removeAlias(data, alias) {
 }
 
 function transform (data) {
-    var aliasRegex = /{alias (.*)( )*}( )*(\n)?/g,
+    var aliasRegex = /{alias (.*)( )*}( )*(\r)?(\n)?/g,
         aliases = [];
 
     data = data.replace(aliasRegex, function(all, templateName){

@@ -1,17 +1,18 @@
-var commandLine = new (require('node-commandline').CommandLine)('soy2.js'),
-    command,
+var parser = require('blaster-command'),
+    commands,
     preprocessor = require('./preprocessor');
 
-commandLine.addArgument('-map',{type: 'string', required: true});
+parser.add('s', 'source', '', 'Source file');
 
-var command = commandLine.parse.apply(this, process.argv);
+commands = parser.parse();
+//console.log( commands );
 
-if (!command['-map']) {
+if (!commands.source) {
     console.log('Soy2 to Soy compiler');
     console.log('usage:');
-    return console.log(commandLine.toString());
+    return parser.showHelp();
 }
 
-preprocessor.preprocess(command['-map']);
+preprocessor.preprocess(commands.source);
 
 

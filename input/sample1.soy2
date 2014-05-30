@@ -8,8 +8,7 @@
 {template .helloWorld}
 
     Hello World!
-
-    Ya
+    Welcome to soy2!
 
     {call belLo.eloBelo /}
 
